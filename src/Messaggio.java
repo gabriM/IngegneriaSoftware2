@@ -19,8 +19,7 @@ public class Messaggio implements Serializable{
 		private String testo;
 		
 		
-		//Costruttori
-		public /*Costruttori*/
+		/*Costruttori*/
 		/**
 		 * Un messaggio e' costituito da destinatario e testo:
 		 *
@@ -28,10 +27,10 @@ public class Messaggio implements Serializable{
 		 * @param _testo il testo del messaggio
 		 *
 		 * @author Gabriele Manenti
-		 */(Utente _destinatario, String _testo){
+		 */
+		public Messaggio(Utente _destinatario, String _testo){
 			destinatario =_destinatario;
 			testo= _testo;
-			
 		}
 
 		/*Getters*/

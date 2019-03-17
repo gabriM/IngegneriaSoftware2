@@ -1,6 +1,19 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Classe che definisce un <i>Utente</i>.
+ *
+ * Un utente ha le seguenti caratteristiche:
+ * nome;
+ * elenco eventi dell'utente
+ * elenco messaggi dell'utente;
+ *
+ * @author Matteo Gusmini
+ *
+ * @version 2.0 1 Febbraio 2019
+ *
+ */
 public class Utente implements Serializable{
 
 	/*Attributi*/

@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * @author Gabriele Manenti
  *
- * @version 4.0 1 Febbraio 2019
+ * @version 2.0 1 Febbraio 2019
  *
  */
 public class Valore implements Serializable{
@@ -90,7 +90,7 @@ public class Valore implements Serializable{
 		inserito=false;
 	}
 	/**
-	 * Controlla che tipo di valore è l'oggetto esaminato:
+	 * Controlla che tipo di valore ï¿½ l'oggetto esaminato:
 	 *
 	 * @return 0 in caso di stringa
 	 * @return 1 in caso di valore numerico(INT)

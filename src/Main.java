@@ -15,7 +15,7 @@ import MyLib.Utility;
  *
  * @author Gabriele Manenti, Matteo Gusmini
  *
- * @version 4.0 1 Febbraio 2019
+ * @version 2.0 1 Febbraio 2019
  *
  */
 public class Main {
@@ -85,7 +85,7 @@ public class Main {
 		String utente= Utility.leggiStringa(MSGLOGIN);
 		
 		
-		/*Controllo se utente già esistente*/
+		/*Controllo se utente giï¿½ esistente*/
 		Boolean esistente =false;
 		int numUtente=0;
 		for(int i=0; i<elencoUtenti.size();i++){
@@ -158,7 +158,7 @@ public class Main {
 			case 2:
 				/*Crea nuovo evento*/
 				
-				/*Elenco delle categorie a cui può appartenere l'evento*/
+				/*Elenco delle categorie a cui puï¿½ appartenere l'evento*/
 				for(int i=0; i<categorie.size();i++){
 					System.out.println(i+1+")");
 					System.out.println(NOME + categorie.get(i).getNome());
@@ -251,7 +251,7 @@ public class Main {
 										/*Evento non valido*/
 										System.out.println(NONVALIDITAPUBBLICAZIONE);
 															
-										/*Possibilità di inserire altri dettagli all'evento*/
+										/*Possibilitï¿½ di inserire altri dettagli all'evento*/
 										int inserimento= Utility.leggiIntero(0,1, "Vuoi inserire completare l'evento? Digita 1 per SI e 0 pre NO");
 										if (inserimento==1){
 											eventop.inserisciDettagliEvento();
