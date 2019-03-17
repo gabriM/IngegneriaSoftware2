@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
-import MyLib.*;
+import MyLib.Utility;
 /**
  * Classe che definisce un <i>Campo</i>.
  *
@@ -142,27 +142,33 @@ public class Campo {
 	 */
 	public void inserisciValore()throws Exception{
 		
+		if (!valore.getInserito()){
 		
-		if(!valore.getInserito()){
-			int inserimento= Utility.leggiIntero(0,1, "Vuoi inserire "+ nome+ "? Digita 1 per SI e 0 pre NO");
-			if(inserimento==0){
+			if(!valore.getInserito()){
+				int inserimento= Utility.leggiIntero(0,1, "Vuoi inserire "+ nome+ "? Digita 1 per SI e 0 pre NO");
+				if(inserimento==0){
 			
-			}
-			else{
-				switch(valore.getTipo()){
-				case 0:
-					valore.setValore(Utility.leggiStringa("inserisci "+ nome));
-					break;
-				case 1:
-					valore.setValore(Utility.leggiIntero(0, 9999999, "inserisci "+ nome));
-					break;
-				case 2: 
-					String data=Utility.leggiData("inserisci "+ nome+ "(gg/mm/aaaa)");
-					Date date=new SimpleDateFormat("dd/MM/yyyy").parse(data);	
-					break;
+				}
+				else{
+					switch(valore.getTipo()){
+					case 0:
+						valore.setValore(Utility.leggiLinea("inserisci "+ nome));
+						break;
+					case 1:
+						valore.setValore(Utility.leggiIntero(0, 9999999, "inserisci "+ nome));
+						break;
+					case 2: 
+						String data=Utility.leggiData("inserisci "+ nome+ "(gg/mm/aaaa)");
+						Date date=new SimpleDateFormat("dd/MM/yyyy").parse(data);
+						valore.setValore(date);
+						break;
+					case 3:
+						String ora= Utility.leggiOra("Inserisci " + nome + " (hh:mm)");
+						valore.setValore(ora);
+						break;
+					}
 				}
 			}
-		}	
+		}
 	}
-
 }

@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,17 +14,17 @@ import java.util.Date;
  *
  * @author Gabriele Manenti
  *
- * @version 2.0 1 Febbraio 2019
+ * @version 4.0 1 Febbraio 2019
  *
  */
-public class Valore {
+public class Valore implements Serializable{
 	
 	/*Attributi*/
 	private int tipo;
 	private String testo;
 	private int numero;
 	private Date giorno;
-	private Boolean inserito=false;
+	private Boolean inserito;
 	
 	
 	/*Costruttori*/
@@ -35,6 +36,7 @@ public class Valore {
 	 */
 	public Valore(int _tipo){
 		tipo=_tipo;
+		inserito= false;
 	}
 	
 	/*Getters*/
@@ -56,6 +58,8 @@ public class Valore {
 	public Boolean getInserito() {
 		return inserito;
 	}
+
+	/*Setters*/
 	/**
 	 * Metodo che imposta il tipo di un oggetto
 	 * @param tipo il tipo di un oggetto
@@ -75,14 +79,23 @@ public class Valore {
 	public void setInserito(Boolean inserito) {
 		this.inserito = inserito;
 	}
-	
+
 	/*Metodi*/
+	/**
+	 * Imposta la verifica dell'inserimento come false (rimuove compilazione valore)
+	 *
+	 * @author Gabriele Manenti
+	 */
+	public void removeValore(){
+		inserito=false;
+	}
 	/**
 	 * Controlla che tipo di valore è l'oggetto esaminato:
 	 *
 	 * @return 0 in caso di stringa
 	 * @return 1 in caso di valore numerico(INT)
 	 * @return 2 in caso di data
+	 * @return 3 in caso di ora
 	 *
 	 * @author Matteo Gusmini
 	 */
@@ -95,11 +108,17 @@ public class Valore {
 			
 		case 2:
 			return giorno;
+		
+		case 3:
+			return testo;
 			
 		}
 		return tipo;
-
+		
+		
 	}
+	
+	
 	/**
 	 * Metodo preimpostato che imposta valore di default
 	 *
@@ -135,6 +154,6 @@ public class Valore {
 	public void setValore(Date giorno) {
 		this.giorno = giorno;
 		inserito=true;
-	}	
+	}
 
 }

@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.*;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-import MyLib.*;
+
+import java.util.ArrayList;
 
 
 /**
@@ -36,20 +35,22 @@ public class Categoria {
 	public static final int STRING = 0;
 	public static final int INT = 1;
 	public static final int DATE = 2;
+	public static final int ORA = 3;
 	
 	/*Attributi*/
 	private String nome;
 	private String descrizione;
-	private Campo titolo=new Campo("Titolo","Consiste in un nome di fantasia attribuito all‚Äôevento",false,STRING);
-	private Campo nPartecipanti=new Campo("Numero di partecipanti"," Stabilisce il numero di persone da coinvolgere nell‚Äôevento",true,INT);
-	private Campo termineIscrizione=new Campo("Termine ultimo iscrizione","Indica l'ultimo giorno utile per iscriversi all‚Äôevento",true,DATE);
-	private Campo luogo=new Campo("Luogo","Indica l'indirizzo in cui si svolger√† l‚Äôevento oppure il punto di ritrovo",true,STRING);
-	private Campo ora=new Campo("Ora","Indica l'ora in cui i partecipanti dovranno recarisi nel luogo prestabilito",true,INT);
-	private Campo durata=new Campo("Durata","Indica la durata in termini di numero(approssimativo)di ore e minuti, per gli eventi che si esauriscono in un sol giorno, o in termini di numero esatto di giorni, per gli eventi che occupano pi√π giorni consecutivi",false,INT);
-	private Campo quotaIndividuale=new Campo("Quota individuale"," indica la spesa (o una stima della stessa) che ogni partecipante all‚Äôiniziativa dovr√† sostenere (si noti che la spesa pu√≤ anche essere nulla)",true,INT);
-	private Campo compresoQuota=new Campo("Compreso nella quota"," indica tutte le voci di spesa comprese nell‚Äôammontare indicato nella ‚ÄúQuota individuale‚Äù",false,STRING);
-	private Campo dataFine=new Campo("Data conclusiva"," Indica la data di fine dell‚Äôevento",false,DATE);
-	private Campo oraFine=new Campo("Ora conclusiva"," Indica l'ora di fine dell‚Äôevento",false,INT);
+	private Campo titolo=new Campo("Titolo","Consiste in un nome di fantasia attribuito allíevento",false,STRING);
+	private Campo nPartecipanti=new Campo("Numero di partecipanti"," Stabilisce il numero di persone da coinvolgere nellíevento",true,INT);
+	private Campo termineIscrizione=new Campo("Termine ultimo iscrizione","Indica l'ultimo giorno utile per iscriversi allíevento",true,DATE);
+	private Campo luogo=new Campo("Luogo","Indica l'indirizzo in cui si svolger‡ líevento oppure il punto di ritrovo",true,STRING);
+	private Campo data=new Campo("Data Evento"," Indica la data in cui si svolger‡ l'evento, o la data di inizio nel caso l'evento duri pi˘ giorni",true,DATE);
+	private Campo ora=new Campo("Ora","Indica l'ora in cui i partecipanti dovranno recarisi nel luogo prestabilito",true,ORA);
+	private Campo durata=new Campo("Durata","Indica la durata in termini di numero(approssimativo)di ore e minuti, per gli eventi che si esauriscono in un sol giorno, o in termini di numero esatto di giorni, per gli eventi che occupano pi˘ giorni consecutivi",false,ORA);
+	private Campo quotaIndividuale=new Campo("Quota individuale"," indica la spesa (o una stima della stessa) che ogni partecipante allíiniziativa dovr‡ sostenere (si noti che la spesa puÚ anche essere nulla)",true,INT);
+	private Campo compresoQuota=new Campo("Compreso nella quota"," indica tutte le voci di spesa comprese nellíammontare indicato nella ìQuota individualeî",false,STRING);
+	private Campo dataFine=new Campo("Data conclusiva"," Indica la data di fine dellíevento",false,DATE);
+	private Campo oraFine=new Campo("Ora conclusiva"," Indica l'ora di fine dellíevento",false,ORA);
 	private Campo note=new Campo("Note"," Contiene informazioni aggiuntive circa l'evento",false,STRING);
 	private ArrayList<Campo> elencoCampi = new ArrayList<>();
 	
@@ -67,17 +68,6 @@ public class Categoria {
 	public Categoria(String _nome, String _descrizione){
 		nome=_nome;
 		descrizione= _descrizione;
-		elencoCampi.add(titolo);
-		elencoCampi.add(nPartecipanti);
-		elencoCampi.add(termineIscrizione);
-		elencoCampi.add(luogo);
-		elencoCampi.add(ora);
-		elencoCampi.add(durata);
-		elencoCampi.add(quotaIndividuale);
-		elencoCampi.add(compresoQuota);
-		elencoCampi.add(dataFine);
-		elencoCampi.add(oraFine);
-		elencoCampi.add(note);
 	}
 
 	/*Getters*/
@@ -163,7 +153,7 @@ public class Categoria {
 		return quotaIndividuale;
 	}
 	/**
-	 * Ritorna ci√≤ che √® compreso nella quota individuale
+	 * Ritorna ciÚ che Ë compreso nella quota individuale
 	 * @return compreso nella quota individuale
 	 *
 	 * @author Gabriele Manenti
@@ -309,6 +299,15 @@ public class Categoria {
 		this.dataFine = dataFine;
 	}
 	/**
+	 * Ritorna la data dell'evento
+	 * @return data dell'evento
+	 *
+	 * @author Gabriele Manenti
+	 */
+	public Campo getData() {
+		return data;
+	}
+	/**
 	 * Metodo che imposta l'ora di fine dell'evento
 	 * @param oraFine l'ora di fine dell'evento
 	 *
@@ -334,7 +333,15 @@ public class Categoria {
 	public void setElencoCampi(ArrayList<Campo> elencoCampi) {
 		this.elencoCampi = elencoCampi;
 	}
-
+	/**
+	 * Metodo che imposta la data dell'evento
+	 * @param data la data dell'evento
+	 *
+	 * @author Gabriele Manenti
+	 */
+	public void setData(Campo data) {
+		this.data = data;
+	}
 	/*Metodi*/
 	/**
 	 * Assegna i valori ai campi comuni a tutte le categorie
@@ -362,6 +369,23 @@ public class Categoria {
 		}
 		
 	}
-
-
+	/**
+	 * Crea array con tutti i campi relativi all'evento
+	 *
+	 * @author Gabriele Manenti
+	 */
+	public void creaArray(){
+		elencoCampi.add(titolo);
+		elencoCampi.add(nPartecipanti);
+		elencoCampi.add(termineIscrizione);
+		elencoCampi.add(luogo);
+		elencoCampi.add(data);
+		elencoCampi.add(ora);
+		elencoCampi.add(durata);
+		elencoCampi.add(quotaIndividuale);
+		elencoCampi.add(compresoQuota);
+		elencoCampi.add(dataFine);
+		elencoCampi.add(oraFine);
+		elencoCampi.add(note);
+	}	
 }
