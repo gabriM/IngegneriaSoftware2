@@ -10,7 +10,7 @@ import MyLib.Utility;
  *
  * Un evento contiene le seguenti caratteristiche:
  * categoria;
- * validitÃ ;
+ * validità ;
  * creatore;
  * elenco utenti iscritti;
  * stato.
@@ -23,8 +23,8 @@ import MyLib.Utility;
 public class Evento implements Serializable{
 	
 	/*Costanti*/
-	final String[] TESTOCHIUSURA={"L'evento "," ha raggiunto un numero sufficiente di iscrizioni e si terra dunque in data "," alle ore "," presso ",". Si ricorda che ï¿½ necessatrio versare la quota di iscrizione di "," Euro."};
-	final String[] TESTOFALLITO={"L'evento "," NON ha raggiunto un numero sufficiente di iscrizioni ed ï¿½ quindi stato cancellato."};
+	final String[] TESTOCHIUSURA={"L'evento "," ha raggiunto un numero sufficiente di iscrizioni e si terra dunque in data "," alle ore "," presso ",". Si ricorda che è necessatrio versare la quota di iscrizione di "," Euro."};
+	final String[] TESTOFALLITO={"L'evento "," NON ha raggiunto un numero sufficiente di iscrizioni ed è quindi stato cancellato."};
 	
 	/*Attributi*/
 	private Categoria categoria;
@@ -35,7 +35,7 @@ public class Evento implements Serializable{
 	
 	/*Costruttori*/
 	/**
-	 * Una evento e' costituito da categoria, validitï¿½, creatore, elenco utenti e stato.
+	 * Una evento e' costituito da categoria, validità, creatore, elenco utenti e stato.
 	 *
 	 * @param _categoria categoria dell'evento
 	 * @param _creatore creatore dell'evento
@@ -60,7 +60,7 @@ public class Evento implements Serializable{
 		return categoria;
 	}
 	/**
-	 * Ritorna la validitï¿½ dell'evento
+	 * Ritorna la validità dell'evento
 	 * @return validita dell'evento
 	 *
 	 * @author Matteo Gusmini
@@ -107,8 +107,8 @@ public class Evento implements Serializable{
 		this.categoria = categoria;
 	}
 	/**
-	 * Metodo che imposta la validitï¿½ dell'evento
-	 * @param validita validitï¿½ dell'evento
+	 * Metodo che imposta la validità dell'evento
+	 * @param validita validità dell'evento
 	 *
 	 * @author Matteo Gusmini
 	 */
@@ -168,10 +168,10 @@ public class Evento implements Serializable{
 		categoria.inserisciCampi();
 	}
 	/**
-	 * Metodo che, dato il nome di un utente, permette di sapere se questo utente ï¿½ giï¿½ iscritto ad un evento
+	 * Metodo che, dato il nome di un utente, permette di sapere se questo utente è già iscritto ad un evento
 	 *
 	 * @param utente il nome dell'utente
-	 * @return true se l'utente ï¿½ presente nell'elenco di utenti iscritti all'evento, false altrimenti
+	 * @return true se l'utente è presente nell'elenco di utenti iscritti all'evento, false altrimenti
 	 *
 	 * @author Matteo Gusmini
 	 */
@@ -212,7 +212,7 @@ public class Evento implements Serializable{
 		return valido;
 	}
 	/**
-	 * Controlla se il numero di partecipanti di un evento ha raggiunto il limite e se ï¿½ vero imposta lo stato evento come "Chiuso" e
+	 * Controlla se il numero di partecipanti di un evento ha raggiunto il limite e se è vero imposta lo stato evento come "Chiuso" e
 	 * genera i messaggi (Restituisce un ArrayList di Messaggio) contenenti informazioni relative allo stato dell'evento e li manda
 	 * a tutti gli utenti iscritti all'evento
 	 *
@@ -243,8 +243,8 @@ public class Evento implements Serializable{
 		
 	}
 	/**
-	 * Controlla se ï¿½ stata superata la data di svolgimento dell'evento e se i posti disponibili sono esauriti: se ï¿½ vero imposta
-	 * lo stato evento come "Concluso", altrimenti se ï¿½ stata superata la data di svolgimento dell'evento ma non si ï¿½ raggiunto
+	 * Controlla se è stata superata la data di svolgimento dell'evento e se i posti disponibili sono esauriti: se è vero imposta
+	 * lo stato evento come "Concluso", altrimenti se è stata superata la data di svolgimento dell'evento ma non si è raggiunto
 	 * il numero minimo di partecipanti, lo stato dell'evento viene impostato come "Fallito" e genera i messaggi (Restituisce un ArrayList di Messaggio) contenenti
 	 * informazioni relative allo stato dell'evento e li manda a tutti gli utenti iscritti all'evento.
 	 *
@@ -261,7 +261,7 @@ public class Evento implements Serializable{
 		
 		ArrayList<Messaggio> messaggiStato = new ArrayList<>();
 		
-		/*Verifica se ï¿½ stata passata la data conclusiva dell'evento (nel caso sia inserita)o la data dell'evento*/
+		/*Verifica se è stata passata la data conclusiva dell'evento (nel caso sia inserita)o la data dell'evento*/
 		if(categoria.getDataFine().getValore().getInserito()){
 			if( ((Date) categoria.getDataFine().getValore().getValore()).before(date)){
 				if (getPostiLiberi()==0){
@@ -277,7 +277,7 @@ public class Evento implements Serializable{
 			}
 		}
 		
-		/*Controlla se ï¿½ stata superata la data di termine delle iscrizioni senza aver raggiunto il numero minimo di iscritti*/
+		/*Controlla se è stata superata la data di termine delle iscrizioni senza aver raggiunto il numero minimo di iscritti*/
 		/*Genera dei messaggi in caso affermativo*/
 		if( ((Date) categoria.getTermineIscrizione().getValore().getValore()).before(date)){
 			if (getPostiLiberi()!=0){

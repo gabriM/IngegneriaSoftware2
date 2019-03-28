@@ -42,8 +42,8 @@ public class Main {
 		final String SCELTAEVENTOPUBBLICAZIONE ="Quale evento vuoi pubblicare?";
 		final String SCELTAMSG ="Quale messaggio vuoi eliminare?";
 		final String NOMEEVENTO="Nome evento: ";
-		final String VALIDITAPUBBLICAZIONE = "L'evento selezionato ï¿½ valido, ï¿½ stato pubblicato ed ï¿½ visibile sulla bacheca.";
-		final String NONVALIDITAPUBBLICAZIONE = "L'evento selezionato non ï¿½ valido! Selezionare un altro evento. \n (Un Evento ï¿½ valido solo se ï¿½ stato assegnato un valore a tutti i campi obbligatori)";
+		final String VALIDITAPUBBLICAZIONE = "L'evento selezionato è valido, è stato pubblicato ed è visibile sulla bacheca.";
+		final String NONVALIDITAPUBBLICAZIONE = "L'evento selezionato non è valido! Selezionare un altro evento. \n (Un Evento è valido solo se è stato assegnato un valore a tutti i campi obbligatori)";
 		final String BACHECAVUOTA = "Non vi sono eventi validi pubblicati.";
 		final String EVENTIVUOTI = "Non ci sono eventi creati e non acora pubblicati in bacheca.";
 		final String MESSAGGIVUOTI = "Non ci sono messaggi.";
@@ -85,7 +85,7 @@ public class Main {
 		String utente= Utility.leggiStringa(MSGLOGIN);
 		
 		
-		/*Controllo se utente giï¿½ esistente*/
+		/*Controllo se utente già esistente*/
 		Boolean esistente =false;
 		int numUtente=0;
 		for(int i=0; i<elencoUtenti.size();i++){
@@ -158,7 +158,7 @@ public class Main {
 			case 2:
 				/*Crea nuovo evento*/
 				
-				/*Elenco delle categorie a cui puï¿½ appartenere l'evento*/
+				/*Elenco delle categorie a cui può appartenere l'evento*/
 				for(int i=0; i<categorie.size();i++){
 					System.out.println(i+1+")");
 					System.out.println(NOME + categorie.get(i).getNome());
@@ -251,7 +251,7 @@ public class Main {
 										/*Evento non valido*/
 										System.out.println(NONVALIDITAPUBBLICAZIONE);
 															
-										/*Possibilitï¿½ di inserire altri dettagli all'evento*/
+										/*Possibilità di inserire altri dettagli all'evento*/
 										int inserimento= Utility.leggiIntero(0,1, "Vuoi inserire completare l'evento? Digita 1 per SI e 0 pre NO");
 										if (inserimento==1){
 											eventop.inserisciDettagliEvento();
