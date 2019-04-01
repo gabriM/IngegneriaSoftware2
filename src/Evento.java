@@ -304,4 +304,24 @@ public class Evento implements Serializable{
 	public int getPostiLiberi(){
 		return (int) categoria.getnPartecipanti().getValore().getValore()- elencoIscritti.size();
 	}
+	
+	/**
+	 * Metodo che visualizza, se inseriti, i dettagli di un evento
+	 * 
+	 * @author Matteo Gusmini
+	 */
+	public void visualizzaDettagli() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		ArrayList<Campo> elencoCampi=new ArrayList<>();
+		elencoCampi=categoria.getElencoCampi();
+		for(int i=0;i<elencoCampi.size();i++){
+			if (elencoCampi.get(i).getValore().getInserito()==true){
+				if(elencoCampi.get(i).getValore().getTipo()!=2)
+					System.out.println(elencoCampi.get(i).getNome() + " : " + elencoCampi.get(i).getValore().getValore());
+				else
+					System.out.println(elencoCampi.get(i).getNome() + " : " + dateFormat.format(elencoCampi.get(i).getValore().getValore()));
+			}
+		}
+	}
+	
 }

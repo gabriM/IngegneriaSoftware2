@@ -38,10 +38,16 @@ public class Main {
 		final String DESCRIZIONE="Descrizione: ";
 		final String SCELTACATEGORIA="Quale categoria vuoi vedere in dettaglio?";
 		final String SCELTACATEGORIAEVENTO="Quale categoria di evento vuoi creare?";
+		final String SCELTADETEVENTO="Quale evento vuoi vedere in dettaglio?";
 		final String SCELTAISCEVENTO="A quale evento desideri iscriverti?";
 		final String SCELTAEVENTOPUBBLICAZIONE ="Quale evento vuoi pubblicare?";
 		final String SCELTAMSG ="Quale messaggio vuoi eliminare?";
 		final String NOMEEVENTO="Nome evento: ";
+		final String TERMINEISCRIZIONE="Termine ultimo per l'iscrizione: ";
+		final String DATA="Data evento: ";
+		final String QUOTA="Quota iscrizione: ";
+		final String LUOGO="Luogo evento: ";
+		final String ORA="Ora evento: ";
 		final String VALIDITAPUBBLICAZIONE = "L'evento selezionato è valido, è stato pubblicato ed è visibile sulla bacheca.";
 		final String NONVALIDITAPUBBLICAZIONE = "L'evento selezionato non è valido! Selezionare un altro evento. \n (Un Evento è valido solo se è stato assegnato un valore a tutti i campi obbligatori)";
 		final String BACHECAVUOTA = "Non vi sono eventi validi pubblicati.";
@@ -102,6 +108,9 @@ public class Main {
 		}
 		ServizioFile.salvaSingoloOggetto(fileutenti, elencoUtenti);
 	
+		/* Creazione formato Data*/
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		
 		/*Creazione delle categorie di cui possono essere i vari eventi*/
 		Partita partita= new Partita();
 		categorie.add(partita);
@@ -272,13 +281,24 @@ public class Main {
 				/*Visualizza Bacheca*/
 				
 				if(bacheca.getElencoEventi().size() != 0){
+					System.out.println("0) Esci");
 					for(int i=0; i<bacheca.getElencoEventi().size();i++){
 						System.out.println(i+1 +")");
-						System.out.println(NOMEEVENTO + bacheca.getElencoEventi().get(i).getCategoria().getTitolo().getValore().getValore());
 						System.out.println(NOME + bacheca.getElencoEventi().get(i).getCategoria().getNome());
+						System.out.println(NOMEEVENTO + bacheca.getElencoEventi().get(i).getCategoria().getTitolo().getValore().getValore());
+						System.out.println(TERMINEISCRIZIONE + dateFormat.format(bacheca.getElencoEventi().get(i).getCategoria().getTermineIscrizione().getValore().getValore()));
+						System.out.println(LUOGO + bacheca.getElencoEventi().get(i).getCategoria().getLuogo().getValore().getValore());
+						System.out.println(DATA + dateFormat.format(bacheca.getElencoEventi().get(i).getCategoria().getData().getValore().getValore()));
+						System.out.println(ORA + bacheca.getElencoEventi().get(i).getCategoria().getOra().getValore().getValore());
+						System.out.println(QUOTA + bacheca.getElencoEventi().get(i).getCategoria().getQuotaIndividuale().getValore().getValore());
+						
 						System.out.println(STATO + bacheca.getElencoEventi().get(i).getStato());
 						System.out.println(POSTILIBERI + bacheca.getElencoEventi().get(i).getPostiLiberi());
 						}
+					int numDetEv=Utility.leggiIntero(1, categorie.size()+1, SCELTADETEVENTO);
+					if(numDetEv!=0){
+						bacheca.getElencoEventi().get(numDetEv-1).visualizzaDettagli();
+					}
 					
 				}else{
 					System.out.println(BACHECAVUOTA);
