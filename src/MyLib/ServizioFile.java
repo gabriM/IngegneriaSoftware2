@@ -8,9 +8,8 @@ public class ServizioFile{
 	private final static String MSG_NO_SCRITTURA = "ATTENZIONE: PROBLEMI CON LA SCRITTURA DEL FILE ";
 	private final static String MSG_NO_CHIUSURA ="ATTENZIONE: PROBLEMI CON LA CHIUSURA DEL FILE ";
 
-
 	public static int esistenzaFile(File f){
-		if(f.exists())
+		if(f.length()!=0)
 			return 1;
 		else
 			return 0;

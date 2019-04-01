@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * @version 2.0 1 Febbraio 2019
  *
  */
-public class Categoria {
+public class Categoria implements Serializable{
 	
 	/*Costanti*/
 	public static final int STRING = 0;

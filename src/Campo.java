@@ -17,7 +17,7 @@ import MyLib.Utility;
  * @version 2.0 1 Febbraio 2019
  *
  */
-public class Campo {
+public class Campo implements Serializable{
 	
 	/*Attributi*/
 	private String nome;
